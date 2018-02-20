@@ -6,30 +6,49 @@ class Board
   attr_reader :grid
 
   def initialize
-    @grid = Array.new(8) { Array.new(8) { NullPiece.new } }
-    @grid[0].each_index do |idx|
-      @grid[0][idx] = Piece.new
+    @grid = Array.new(8) { Array.new(8) {} }
+
+    @grid.each_with_index do |row, idx1|
+      row.each_with_index do |col, idx2|
+        if [0, 1, 6, 7].include?(idx1)
+          @grid[idx1][idx2] = Piece.new([idx1, idx2])
+        else
+          @grid[idx1][idx2] = NullPiece.instance
+        end
+      end
     end
-    @grid[1].each_index do |idx|
-      @grid[1][idx] = Piece.new
-    end
-    @grid[6].each_index do |idx|
-      @grid[6][idx] = Piece.new
-    end
-    @grid[7].each_index do |idx|
-      @grid[7][idx] = Piece.new
-    end
+
+    # @grid[0].each_index do |idx|
+    #   @grid[0][idx] = Piece.new([0, idx])
+    # end
+    # @grid[1].each_index do |idx|
+    #   @grid[1][idx] = Piece.new
+    # end
+    # @grid[6].each_index do |idx|
+    #   @grid[6][idx] = Piece.new
+    # end
+    # @grid[7].each_index do |idx|
+    #   @grid[7][idx] = Piece.new
+    # end
 
   end
 
   def render(cursor_pos)
     @grid.each_with_index do |row, idx1|
       row.each_with_index do |el, idx2|
-        if cursor_pos == [idx1, idx2]
-          print el.symbol.colorize(:red)
+        sym = el.symbol
+
+        if (idx1 + idx2).odd?
+          sym = sym.colorize(background: :light_yellow)
         else
-          print el.symbol
+          sym = sym.colorize(background: :white)
         end
+
+        if cursor_pos == [idx1, idx2]
+          sym.colorize(:red)
+        end
+
+        print sym
       end
       puts
     end

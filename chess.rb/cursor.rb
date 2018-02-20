@@ -97,5 +97,7 @@ class Cursor
 end
 
 if __FILE__ == $PROGRAM_NAME
-  c = Cursor.new([0,0], Board.new)
+  c = Cursor.new([0, 0], Board.new)
+  # p c.update_pos([0, 1])
+
 end

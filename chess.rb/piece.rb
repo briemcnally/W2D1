@@ -28,6 +28,10 @@ class Piece
     @current_pos = current_pos
   end
 
+  def symbol
+    " \u2656 ".encode('utf-8')
+  end
+
   def to_s
     " X "
   end
