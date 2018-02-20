@@ -9,7 +9,8 @@ class Display
   end
 
   def render
-    while true
+    loop do
+      system('clear')
       @board.render(@cursor.cursor_pos)
       @cursor.get_input
     end

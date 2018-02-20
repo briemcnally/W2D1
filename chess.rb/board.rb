@@ -26,9 +26,9 @@ class Board
     @grid.each_with_index do |row, idx1|
       row.each_with_index do |el, idx2|
         if cursor_pos == [idx1, idx2]
-          print el.to_s.colorize(:red)
+          print el.symbol.colorize(:red)
         else
-          print el
+          print el.symbol
         end
       end
       puts
