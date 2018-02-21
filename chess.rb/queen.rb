@@ -6,8 +6,18 @@ class Queen < Piece
 
   include SlidingPiece
 
+  SETUP_POS = [[0, 3], [7, 3]]
+
+  def self.set_up
+    SETUP_POS
+  end
+
   def symbol
-    "\u2654".encode('utf-8')
+    if @color == :white
+      " \u2655 ".encode('utf-8')
+    else
+      " \u265B ".encode('utf-8')
+    end
   end
 
   def move_dirs

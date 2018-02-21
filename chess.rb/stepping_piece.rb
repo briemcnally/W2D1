@@ -1,7 +1,5 @@
 module SteppingPiece
 
-
-
   def moves
     diffs = move_dirs.map { |key| Piece::MOVES[key] }
 

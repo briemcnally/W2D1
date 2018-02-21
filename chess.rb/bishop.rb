@@ -6,8 +6,18 @@ class Bishop < Piece
 
   include SlidingPiece
 
+  SETUP_POS = [[0, 2], [0, 5], [7, 2], [7, 5]]
+
+  def self.set_up
+    SETUP_POS
+  end
+
   def symbol
-    "\u2657".encode('utf-8')
+    if @color == :white
+      " \u2657 ".encode('utf-8')
+    else
+      " \u265D ".encode('utf-8')
+    end
   end
 
   def move_dirs

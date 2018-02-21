@@ -6,8 +6,18 @@ class Rook < Piece
 
   include SlidingPiece
 
+  SETUP_POS = [[0, 0], [0, 7], [7, 0], [7, 7]]
+
+  def self.set_up
+    SETUP_POS
+  end
+
   def symbol
-    "\u2656".encode('utf-8')
+    if @color == :white
+      " \u2656 ".encode('utf-8')
+    else
+      " \u265C ".encode('utf-8')
+    end
   end
 
   def move_dirs

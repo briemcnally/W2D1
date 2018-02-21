@@ -1,13 +1,22 @@
 require_relative 'stepping_piece'
 require_relative 'piece'
-require_relative 'board'
 
 class King < Piece
 
   include SteppingPiece
 
+  SETUP_POS = [[0, 4], [7, 4]]
+
+  def self.set_up
+    SETUP_POS
+  end
+
   def symbol
-    "\u2654".encode('utf-8')
+    if @color == :white
+      " \u2654 ".encode('utf-8')
+    else
+      " \u265A ".encode('utf-8')
+    end
   end
 
   def move_dirs

@@ -6,8 +6,19 @@ class Knight < Piece
 
   include SteppingPiece
 
+  SETUP_POS = [[0, 1], [0, 6], [7, 1], [7, 6]]
+
+  def self.set_up
+    SETUP_POS
+  end
+
+
   def symbol
-    "\u2658".encode('utf-8')
+    if @color == :white
+      " \u2658 ".encode('utf-8')
+    else
+      " \u265E ".encode('utf-8')
+    end
   end
 
   def move_dirs
